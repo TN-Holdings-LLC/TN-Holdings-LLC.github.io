@@ -3,7 +3,7 @@
 
 TN Holdings LLC is a specialized research and holding entity focused on deterministic system architectures. Our core mission is to eliminate computational friction (Resistance → 0) through geometric and manifold-aware methodologies.
 
- ![Performance Benchmark](https://github.com/TN-Holdings-LLC/psf-zero/blob/main/docs/12.png)
+![Performance Benchmark](https://raw.githubusercontent.com/TN-Holdings-LLC/psf-zero/main/docs/12.png)
 
 ### Core Projects
 - **PSF-Zero**: Deterministic $SU(4)$ unitary synthesis for Qiskit.
