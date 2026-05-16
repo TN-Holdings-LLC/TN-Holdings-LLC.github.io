@@ -6,8 +6,11 @@ TN Holdings LLC is a specialized research and holding entity focused on determin
 ![Performance Benchmark](https://raw.githubusercontent.com/TN-Holdings-LLC/psf-zero/main/docs/12.png)
 
 ### Core Projects
-- **PSF-Zero**: Deterministic $SU(4)$ unitary synthesis for Qiskit.
-- **R0-GPCLayer**: Geometric preconditioning for classical neural networks.
+
+### Core Projects
+
+- **[PSF-Zero](https://github.com/TN-Holdings-LLC/psf-zero)**: Deterministic $SU(4)$ unitary synthesis for Qiskit.
+- **[R0-GPCLayer](https://github.com/TN-Holdings-LLC/R0-GPCLayer)**: Geometric preconditioning for classical neural networks.
 
 ### Vision
 From quantum manifolds to classical AI, we provide the "Frictionless Foundation" for next-generation computation.
