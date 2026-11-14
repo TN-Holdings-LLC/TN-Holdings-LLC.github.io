@@ -50,6 +50,10 @@
   ol.papers li { margin: 0 0 12px; }
   ol.papers .doi { font-family: var(--mono); font-size: 13px; }
   ol.papers .meta { color: var(--muted); font-size: 14px; }
+  ul.diff { margin: 0; padding-left: 20px; max-width: 760px; }
+  ul.diff li { margin: 0 0 10px; }
+  .limits { margin: 18px 0 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--muted); font-size: 15px; max-width: 760px; }
+  .limits b { color: var(--fg); }
   footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
   code { font-family: var(--mono); font-size: .92em; }
 </style>
@@ -118,6 +122,32 @@
             table built from the notebook's records.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>What psf-os does differently</h2>
+      <p class="sub">Qiskit and IBM Runtime aim to give any circuit the best value they can: layouts scored with the
+        day's error rates, results corrected by mitigation. psf-os aims to say how far a value can be trusted, for the
+        circuit shapes it knows.</p>
+      <ul class="diff">
+        <li><b>No calibration map.</b> Placement reads the coupling graph and the failed elements, never an error rate:
+          the same circuit lands on the same qubits whatever the day's calibration says, so a run can be declared before
+          the calibration is fetched and results compare across days.</li>
+        <li><b>Checks in the same job, reported, never used to correct.</b> A floor, a mirror, a ring sentinel and the
+          Clifford twin (the same pulses, with an exact answer at any size) run beside the user's circuit; the answer
+          card says whether the result reads and how much of the signal the device kept.</li>
+        <li><b>A defect list of its own.</b> Elements its scans find dead, including defects the calibration does not
+          show, are registered and avoided from then on.</li>
+        <li><b>Refusal with a reason.</b> A circuit that touches a failed element is not sent; a shape the entrance does
+          not recognise is refused, with the reason.</li>
+        <li><b>Records anyone can re-score.</b> Sealed answers, raw counts and one command (<code>python reproduce.py</code>):
+          34 of 34 results re-scored the same from fresh clones on 2026-11-14.</li>
+      </ul>
+      <p class="limits"><b>What it does not do:</b> general circuits (only chains, rings, 2D lattice patterns and
+        4 &times; M &times; N cubic lattices, on IBM heavy-hex devices); error mitigation, so deep circuits often come back
+        as &ldquo;does not read&rdquo;; anything a wide user base has tested yet (release 0.1, used by its authors).</p>
     </div>
   </section>
 
