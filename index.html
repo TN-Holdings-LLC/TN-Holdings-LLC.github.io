@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TN Holdings LLC</title>
+<meta name="description" content="Quantum compilation by formula, and a self-checking layer that runs users' circuits on IBM devices without the calibration map. Every test declared before its data exists.">
+<style>
+  /* Colour tokens: light by default, dark when the system asks for it. */
+  :root {
+    --bg: #fbfbf9; --fg: #1b1d21; --muted: #5d636e; --line: #e2e2dc;
+    --card: #ffffff; --accent: #1f5fbf; --accent-soft: #e8effa; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121417; --fg: #e8e9ec; --muted: #a0a6b1; --line: #2a2e35; --card: #1a1d22; --accent: #7fb0ff; --accent-soft: #1d2a40; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { padding: 56px 0 32px; border-bottom: 1px solid var(--line); }
+  .name { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  h1 { font-size: clamp(28px, 4.4vw, 42px); line-height: 1.2; margin: 0 0 16px; font-weight: 650; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 720px; margin: 0; }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 22px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 24px; max-width: 720px; }
+  .rules { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .rule { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .rule b { display: block; margin-bottom: 4px; }
+  .rule span { color: var(--muted); font-size: 15px; }
+  .projects { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  /* Four cards each: two by two on wide screens, one column on phones. */
+  @media (min-width: 640px) { .rules, .projects { grid-template-columns: 1fr 1fr; } }
+  .proj { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; }
+  .proj h3 { margin: 0 0 6px; font-size: 18px; }
+  .proj p { margin: 0 0 12px; color: var(--muted); font-size: 15px; flex: 1; }
+  .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-bottom: 10px; align-self: flex-start; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  th { font-size: 13px; color: var(--muted); font-weight: 600; background: transparent; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; width: 26%; }
+  .note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+  ol.papers { padding-left: 22px; margin: 0; }
+  ol.papers li { margin: 0 0 12px; }
+  ol.papers .doi { font-family: var(--mono); font-size: 13px; }
+  ol.papers .meta { color: var(--muted); font-size: 14px; }
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+  code { font-family: var(--mono); font-size: .92em; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="name">TN Holdings LLC</p>
+    <h1>Quantum circuits built by formula, run on real devices without the calibration map.</h1>
+    <p class="lead">We build a compiler that places and schedules circuits by formula instead of search, and a
+      self-checking layer that runs users' circuits on IBM heavy-hex devices and says how far each answer can be
+      trusted. Everything is open, and every device result was declared before its data existed.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>How we test</h2>
+      <p class="sub">The same four rules for every result, including the ones that did not go our way.</p>
+      <div class="rules">
+        <div class="rule"><b>Declared first</b><span>Circuits, predictions and the hash of the exact answers are
+          committed to git before the device's calibration is fetched.</span></div>
+        <div class="rule"><b>Two numbers, side by side</b><span>Each result is given as the benchmark custom would
+          quote it and as someone running it on a device would need it.</span></div>
+        <div class="rule"><b>Raw device runs</b><span>No error mitigation, no dynamical decoupling, no twirling; checks
+          made of the user's own circuit run in the same job and are reported, never used to correct.</span></div>
+        <div class="rule"><b>Every case published</b><span>Raw counts and scorers are committed; every result can be
+          re-scored without IBM. Cases where our method did worse are published next to the rest.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="sub">Four open repositories.</p>
+      <div class="projects">
+        <div class="proj">
+          <span class="tag">compiler</span>
+          <h3><a href="https://github.com/TN-Holdings-LLC/psf-zero">PSF-Zero</a></h3>
+          <p>A Qiskit-compatible compiler that builds circuits by formula, with no search: chains, rings and lattices
+            that embed in the device, and the device's native fractional gates. Every other circuit is refused with a
+            reason. Templates build once and rebind angles in about a millisecond, for training loops.</p>
+        </div>
+        <div class="proj">
+          <span class="tag">operating layer</span>
+          <h3><a href="https://github.com/TN-Holdings-LLC/psf-os">psf-os</a></h3>
+          <p>A self-checking layer between a user's circuit and an IBM heavy-hex device: it places the circuit by
+            formula, adds a floor, a mirror and a ring sentinel to the same job, keeps a list of what it found dead,
+            and returns an answer card. It reads the coupling graph and the failed elements, never a calibration
+            quality number. Working code, not a release.</p>
+        </div>
+        <div class="proj">
+          <span class="tag">records</span>
+          <h3><a href="https://github.com/TN-Holdings-LLC/psf-os-lab-notebook">psf-os-lab-notebook</a></h3>
+          <p>The declared device tests behind the papers: each declared before its calibration was fetched, answers
+            sealed until the verdicts, raw counts committed, every result re-scorable with
+            <code>python reproduce.py</code>. It also keeps the original task-oriented compiler benchmark.</p>
+        </div>
+        <div class="proj">
+          <span class="tag">metric</span>
+          <h3><a href="https://github.com/TN-Holdings-LLC/readable-depth">readable-depth</a></h3>
+          <p>How deep a circuit stays readable on a raw device, per problem family: the definition (a result
+            <em>reads</em> when at least half of the signal's squared size survives), a small scorer, and the boundary
+            table built from the notebook's records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Compilation on real IBM devices</h2>
+      <p class="sub">Where building by formula helps, and where it does not.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>circuit family</th><th>result</th></tr></thead>
+          <tbody>
+            <tr><td>Ising chains built by formula</td><td>higher fidelity in 19 of 23 pairs on three devices; fidelity ratio 1.21 (geometric mean; lowest 0.94)</td></tr>
+            <tr><td>Time-aware gate order</td><td>fidelity 1.17&ndash;1.51&times; higher, 8 of 8, in two pre-registered tests on two devices</td></tr>
+            <tr><td>QAOA and Barab&aacute;si&ndash;Albert graphs (placement decides)</td><td>higher in 9 of 25 pairs only, ratio 0.78; this family is left to search-based compilers, with the data published</td></tr>
+            <tr><td>General circuits (880 Benchpress tests)</td><td>about level with Qiskit level 2 in two-qubit gates (1.046&times;), and slower</td></tr>
+            <tr><td>Two-qubit synthesis (release 2026-10-14.1)</td><td>2.5&ndash;5&times; faster than Qiskit level 3 on two-qubit-block circuits; on 10 jobs on two IBM devices, the same fidelity with 14&ndash;16&times; shorter compile time</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Conditions and every case: <a href="https://github.com/TN-Holdings-LLC/psf-zero">psf-zero README</a> and its <code>docs/findings/</code>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Quantum machine learning: same money, which model?</h2>
+      <p class="sub">6 qubits, 8 layers, a classifier trained with SPSA; Qiskit level 2 against PSF-Zero's template.
+        Pre-registered and scored, in simulation with a device noise model (FakeFez); nothing here ran on a device.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>run</th><th>the benchmark headline</th><th>what a user should also know</th></tr></thead>
+          <tbody>
+            <tr><td>Budget: 2 minutes of QPU ($192), 1,000 seeds</td><td>accuracy at the budget 0.533 against 0.494; higher in 624 of 1,000 seeds</td><td>at this budget both models are weak: classical models reach 0.73&ndash;0.77</td></tr>
+            <tr><td>Reach: 1,000 iterations, 200 seeds</td><td>0.70 accuracy in 300 iterations against 400, for $1,133 against $1,549</td><td>the gain is in cost and speed; the end points are close (0.724 against 0.704)</td></tr>
+            <tr><td>Standard 2: 200 seeds, SPSA tuned so both models learn</td><td>signal (margin) 1.32&times; larger</td><td>accuracy did not differ (0.702 against 0.701); the primary prediction was refuted</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Records: <a href="https://github.com/TN-Holdings-LLC/psf-os-lab-notebook/tree/main/results">psf-os-lab-notebook <code>results/</code></a>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Papers</h2>
+      <p class="sub">Preprints on Zenodo. Declarations, raw counts and scorers are in
+        <a href="https://github.com/TN-Holdings-LLC/psf-os-lab-notebook">psf-os-lab-notebook</a>.</p>
+      <ol class="papers">
+        <li>Ordering Sensitivity in Subgraph-Isomorphism Layout Search<br><a class="doi" href="https://doi.org/10.5281/zenodo.22977930">10.5281/zenodo.22977930</a></li>
+        <li>PSF-Zero: An Analytic Two-Qubit Gate Synthesizer Combined with a Verified, Ordering-Aware Layout Search<br><a class="doi" href="https://doi.org/10.5281/zenodo.22978090">10.5281/zenodo.22978090</a></li>
+        <li>When a Quantum Compiler Looks Like a Better Learner: Confounds in Quantum Machine Learning Comparisons <span class="meta">(v1.3, 2026-10-31)</span><br><a class="doi" href="https://doi.org/10.5281/zenodo.23826596">10.5281/zenodo.23826596</a></li>
+        <li>Folding a Ring onto Heavy-Hex: Formula-Built Schedules with Provable Gate Counts <span class="meta">(v1.3, 2026-10-31)</span><br><a class="doi" href="https://doi.org/10.5281/zenodo.23826764">10.5281/zenodo.23826764</a></li>
+        <li>Readable Depth Without the Calibration Map: Formula Placement on Heavy-Hex Devices, and a Defect the Calibration Does Not Show <span class="meta">(v1.1, 2026-10-31)</span><br><a class="doi" href="https://doi.org/10.5281/zenodo.23827536">10.5281/zenodo.23827536</a></li>
+        <li>What Sets the Readable Depth of a Placed Ring, and How Far a Self-Checking Layer Pushes It: Scan, Register, Avoid and Repair on Three Heavy-Hex Devices Without the Calibration Map <span class="meta">(v1.0, 2026-11-02)</span><br><a class="doi" href="https://doi.org/10.5281/zenodo.23883938">10.5281/zenodo.23883938</a></li>
+        <li>Exact Answers, No Map, No Mitigation: User-Written Circuits through a Placement-Only OS on IBM Heron r2 Devices <span class="meta">(v1, 2026-11-08)</span><br><a class="doi" href="https://doi.org/10.5281/zenodo.24046673">10.5281/zenodo.24046673</a></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    TN Holdings LLC &middot; <a href="mailto:contact.love.os.architect@proton.me">contact.love.os.architect@proton.me</a>
+    &middot; <a href="https://github.com/TN-Holdings-LLC">github.com/TN-Holdings-LLC</a>
+  </div>
+</footer>
+</body>
+</html>
